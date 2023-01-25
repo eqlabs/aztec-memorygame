@@ -12,3 +12,6 @@ artifacts/
 #Hardhat plugin files
 typechain-types/
 .env
+
+#Files to be generated
+proofs/src/plonk_vk.sol
