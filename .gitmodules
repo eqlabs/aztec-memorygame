@@ -4,6 +4,3 @@
 [submodule "lib/solmate"]
 	path = proofs/lib/solmate
 	url = https://github.com/rari-capital/solmate
-[submodule "ui"]
-	path = proofs/ui
-	url = https://github.com/socathie/hello-noir-ui
