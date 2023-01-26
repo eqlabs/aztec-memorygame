@@ -1,6 +1,4 @@
-# <h1 align="center"> hello-noir: Hardhat x Foundry Template </h1>
-
-Demo hosted on: https://hello-noir.netlify.app/
+# <h1 align="center"> Memory card game </h1>
 
 ## Step-by-Step
 
@@ -8,9 +6,35 @@ Demo hosted on: https://hello-noir.netlify.app/
 1. `forge install`
 2. `npm install`
 3. `npm run test:full`
-4. `npm run deploy`
 
-The frontend repo is a submodule under `ui/`.
+## Project
+
+### Example puzzle
+A 2 times 2 memory card puzzle with numbers instead of pictures:
+```
+2 1
+1 2
+``` 
+
+### Implementation phase 1
+1. A verifier contract is deployed to Goerli
+1. Crude website
+1. Browser generates a new puzzle
+1. User plays in browser until a pair is found
+1. A Noir function `solve` is used for checking a (partial) solution to the puzzle
+    1. It takes the following inputs:
+        1. Full puzzle solution in flattened format: `2 1 1 2`
+        1. The pairs the user has found: for example `2 0 0 2` or then the full solution if all pairs are found
+    1. It generates a proof based on the puzzle and (partial) solution
+    1. The proof is sent to the verifier contract for verification
+
+### Phase 2
+The puzzle is not sent along with the (partial) solution by the user. Preferably sent by someone else, or possibly even somehow stored in Aztec network by some other entity - or generated upon request somehow. Figure out a way to accomplish this.
+
+### Phase 3
+- Add real images to frontend
+- Add styling.
+- Add more entries (not just 2x2)
 
 ---
 
