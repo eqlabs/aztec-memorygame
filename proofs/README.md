@@ -9,7 +9,7 @@
 
 ## Project
 
-### Example puzzle
+### MVP example puzzle
 A 2 times 2 memory card puzzle with numbers instead of pictures:
 ```
 2 1
