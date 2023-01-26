@@ -1,26 +1,27 @@
 # <h1 align="center"> Memory card game </h1>
 
-## Step-by-Step
-
-0. `git submodule update --init --recursive`
-1. `forge install`
-2. `npm install`
-3. `npm run test:full`
-
 ## Project
 
 ### MVP example puzzle
-A 2 times 2 memory card puzzle with numbers instead of pictures:
+Create a 2 times 2 memory card puzzle with numbers instead of pictures. The board is visible but the items are hidden. The player can choose two cards to reveal - if they are the same, they are left revealed. A fresh puzzle looks like this:
+
+```
+0 0
+0 0
+``` 
+
+Once all the pairs have been found, the puzzle looks for example like this:
+
 ```
 2 1
 1 2
 ``` 
 
 ### Implementation phase 1
+1. Create Noir circuit for verifying puzzle solutions (pairs found)
 1. A verifier contract is deployed to Goerli
-1. Crude website
-1. Browser generates a new puzzle
-1. User plays in browser until a pair is found
+1. Create a crude website which user uses to generate a new puzzle
+1. User plays at the website until a pair is found
 1. A Noir function `solve` is used for checking a (partial) solution to the puzzle
     1. It takes the following inputs:
         1. Full puzzle solution in flattened format: `2 1 1 2`
@@ -29,14 +30,23 @@ A 2 times 2 memory card puzzle with numbers instead of pictures:
     1. The proof is sent to the verifier contract for verification
 
 ### Phase 2
+Since phase 1 does not add any real privacy (the browser has all of the information), this phase is aimed at fixing that.
+
 The puzzle is not sent along with the (partial) solution by the user. Preferably sent by someone else, or possibly even somehow stored in Aztec network by some other entity - or generated upon request somehow. Figure out a way to accomplish this.
 
 ### Phase 3
 - Add real images to frontend
-- Add styling.
+- Add styling
 - Add more entries (not just 2x2)
 
 ---
+
+## Step-by-Step
+
+0. `git submodule update --init --recursive`
+1. `forge install`
+2. `npm install`
+3. `npm run test:full`
 
 **Template repository for getting started quickly with Hardhat and Foundry in one project**
 
