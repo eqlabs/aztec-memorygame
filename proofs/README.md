@@ -22,7 +22,7 @@ Once all the pairs have been found, the puzzle looks for example like this:
 1. A verifier contract is deployed to Goerli
 1. Create a crude website which user uses to generate a new puzzle
 1. User plays at the website until a pair is found
-1. A Noir function `solve` is used for checking a (partial) solution to the puzzle
+1. A Noir circuit is used for checking a (partial) solution to the puzzle
     1. It takes the following inputs:
         1. Full puzzle solution in flattened format: `2 1 1 2`
         1. The pairs the user has found: for example `2 0 0 2` or then the full solution if all pairs are found
