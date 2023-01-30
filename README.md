@@ -2,8 +2,10 @@
 
 ## Project
 
+The project is a memory card puzzle game utilizing Aztec network's Zero Knowledge properties.
+
 ### MVP example puzzle
-Create a 2 times 2 memory card puzzle with numbers instead of pictures. The board is visible but the items are hidden. The player can choose two cards to reveal - if they are the same, they are left revealed. A fresh puzzle looks like this:
+Create a 2 times 2 memory puzzle with numbers instead of pictures. The board is visible but the items are hidden. The player can choose two cards to reveal - if they are the same, they are left revealed. A fresh puzzle looks like this:
 
 ```
 0 0
@@ -17,7 +19,11 @@ Once all the pairs have been found, the puzzle looks for example like this:
 1 2
 ``` 
 
-### Implementation phase 1
+### Research phase
+
+Research Noir, Aztec network, Aztec Connect, zk.money and available DeFi integrations.
+
+### Implementation Phase A - PoC
 1. Create Noir circuit for verifying puzzle solutions (pairs found)
 1. A verifier contract is deployed to Goerli
 1. Create a crude website which user uses to generate a new puzzle
@@ -26,22 +32,22 @@ Once all the pairs have been found, the puzzle looks for example like this:
     1. It takes the following inputs:
         1. Full puzzle solution in flattened format: `2 1 1 2`
         1. The pairs the user has found: for example `2 0 0 2` or then the full solution if all pairs are found
-    1. It generates a proof based on the puzzle and (partial) solution
+    1. It generates a proof based on the puzzle and user input
     1. The proof is sent to the verifier contract for verification
 
-### Phase 2
+### Implementation Phase B - Aztec Privacy Magic
 Since phase 1 does not add any real privacy (the browser has all of the information), this phase is aimed at fixing that.
 
-The puzzle is not sent along with the (partial) solution by the user. Preferably sent by someone else, or possibly even somehow stored in Aztec network by some other entity - or generated upon request somehow. Figure out a way to accomplish this.
+The puzzle is not sent along with the (partial) solution by the user. Preferably sent by someone else, or possibly even somehow stored in Aztec network by some other entity - or generated upon request somehow. Figuring out a way to accomplish this
 
-### Phase 3
-- Add real images to frontend
-- Add styling
-- Add more entries (not just 2x2)
+### Implementation Phase C - Making it Real + Publish
+
+Making the game actually real and playable. Creating stylized frontend and creating game assets. 2x2 was just for the test - a real game would be at least 4x4.
+Publishing the final project, and writing a blog post about it, as well as posting on social media to increase Noir awareness.
 
 ---
 
-## Step-by-Step
+## Installation instructions
 
 0. `git submodule update --init --recursive`
 1. `forge install`
