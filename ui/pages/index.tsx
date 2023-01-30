@@ -1,77 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import * as fs from 'fs';
-
-/* import initBackend, {
-  compute_witnesses,
-  serialise_acir_to_barrtenberg_circuit,
-} from "@noir-lang/aztec_backend"; */
-/* import {
-  create_proof,
-  verify_proof,
-  setup_generic_prover_and_verifier,
-  //BarretenbergWasm,
-} from "@noir-lang/barretenberg/dest/client_proofs"; */
-import initialiseAztecBackend from "@noir-lang/aztec_backend";
 import {
-  create_proof,
-  verify_proof,
-  setup_generic_prover_and_verifier,
-} from "@noir-lang/barretenberg";
-import initNoirWasm, { compile } from "@noir-lang/noir_wasm";
-import initialiseResolver from "@noir-lang/noir-source-resolver";
+  compileNoirSource,
+  createProof,
+  verifyProof,
+} from "../utils/compile_prove_verify";
 
-const ACIR_PATH = new URL("../circuits/build/main.acir", import.meta.url).href;
-const CIRCUIT_PATH = new URL("../circuits/src/main.nr", import.meta.url).href;
+const CIRCUIT_PATH = new URL("../../proofs/circuits/src/main.nr", import.meta.url).href;
 
 let inputs = {
   puzzle: [1,2, 1, 2],
   user_input: [1,2, 1, 2],
 };
-
-async function compileNoirSource(noir_source : any) {
-  await initNoirWasm();
-
-  initialiseResolver((id : any) => {
-
-      console.log(`Resolving source ${id}`);
-
-      return noir_source;
-
-  });
-
-  console.log("Compiling Noir source...");
-
-  const compiled_noir = await compile("main.nr");
-
-  console.log("Noir source compilation done.");
-
-  return compiled_noir;
-}
-
-async function createProof(compiled_noir : any, circuitParams : any) {
-
-  await initialiseAztecBackend();
-
-
-
-  const acir = compiled_noir.circuit;
-
-  console.log("Setting up Prover and Verifier...");
-
-  const [prover, verifier] = await setup_generic_prover_and_verifier(acir);
-
-  console.log("Setting up Prover and Verifier done.");
-
-  console.log("Creating proof...");
-
-  const proof = await create_proof(prover, acir, circuitParams);
-
-  console.log("Creating proof done.");
-
-  return { verifier, proof };
-}
 
 export async function execute_procedure() {
 
@@ -80,15 +21,11 @@ export async function execute_procedure() {
 
   const compiled_noir = await compileNoirSource(tex);
 
- 
-
   const { verifier, proof } = await createProof(compiled_noir, inputs);
-
-
 
   console.log("starting verify")
 
-  const verified = await verify_proof(verifier, proof);
+  const verified = await verifyProof(verifier, proof);
 
   console.log("verified: ", verified);
 }
