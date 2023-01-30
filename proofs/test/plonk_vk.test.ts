@@ -43,13 +43,13 @@ describe("TurboVerifier check verification in nargo and in contract", function (
 
     // console.log(serialised_circuit);
     writeFileSync(
-      path.resolve(__dirname, "../circuits/src/main.buf"),
+      path.resolve(__dirname, "../circuits/src/main.acir"),
       Buffer.from(serialised_circuit)
     );
 
     // console.log(acir_to_bytes(acir));
     writeFileSync(
-      path.resolve(__dirname, "../circuits/src/acir.buf"),
+      path.resolve(__dirname, "../circuits/src/acir.acir"),
       Buffer.from(acir_to_bytes(acir))
     );
   });

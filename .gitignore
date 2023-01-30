@@ -15,4 +15,4 @@ typechain-types/
 
 #Files to be generated
 proofs/src/plonk_vk.sol
-proofs/circuits/src/*.buf
+proofs/circuits/src/*.acir
