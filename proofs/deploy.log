@@ -1,0 +1,25 @@
+No files changed, compilation skipped
+Deployer: 0x894BB40B3Fc7EA2C73951811C6ea7828A8BB1A1c
+Deployed to: 0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f
+Transaction hash: 0xb86a534200b48bbe3248eacb1539a3f5573e0ea00121d39517e903afb238ebd3
+Starting contract verification...
+Waiting for etherscan to detect contract deployment...
+Start verifying contract `0x7ea0ef7adf38485b26418bef41b9fb059b98949f` deployed on goerli
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `dzffmvjrfal1rut9ihcmcd2blgumg2k8yeyvx5ydannyrdgig8`
+	URL:
+        https://api-goerli.etherscan.io/apiaddress/0x7ea0ef7adf38485b26418bef41b9fb059b98949f
+Contract source code already verified

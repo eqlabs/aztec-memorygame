@@ -21,9 +21,11 @@ export async function execute_procedure() {
 
   const compiled_noir = await compileNoirSource(tex);
 
-  const { verifier, proof } = await createProof(compiled_noir, inputs);
+  const { verifier, proof} : { verifier: any, proof: Uint8Array }= await createProof(compiled_noir, inputs);
 
-  console.log("starting verify")
+  console.log("starting verify with proof",  Array.from(proof).map(b => b.toString(16)))
+  const bytes = Array.from(proof).map(a => a.toString(16)).reduce((prev, curr) => prev + curr);
+  console.log("Proof bytes", bytes);
 
   const verified = await verifyProof(verifier, proof);
 

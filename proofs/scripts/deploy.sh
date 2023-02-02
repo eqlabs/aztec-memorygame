@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
-
 if [ -f .env ]
 then
-  export $(cat .env | xargs) 
+    export $(cat .env | xargs) 
 else
     echo "Please set your .env file"
     exit 1
 fi
 
-echo "Deploying verifier"
+RPC_URL='https://eth-goerli.g.alchemy.com/v2/'$ALCEHMY_API_KEY
 
-forge create ./src/plonk_vk.sol:TurboVerifier -i --rpc-url 'https://eth-goerli.alchemyapi.io/v2/'${ALCHEMY_API_KEY} --private-key ${GOERLI_PRIVATE_KEY} | tee deploy.log
+forge create ./src/plonk_vk.sol:TurboVerifier -i --rpc-url $RPC_URL --private-key $GOERLI_PRIVATE_KEY --verify | tee deploy.log
 
 echo ""
-
-echo "Verifier deployed successfully 🎉🎉🎉"
+echo "Verifier deployed successfully"
