@@ -22,10 +22,7 @@ useEffect(() => {
   
 }, []);
 
-let inputs = {
-  puzzle: [1,2, 1, 2],
-  user_input: [0,2, 0, 2],
-};
+const puzzle = [1,2, 1, 2];
 
 async function execute_procedure() {
 
@@ -33,6 +30,11 @@ async function execute_procedure() {
   const tex = await cir.text();
 
   const compiled_noir = await compileNoirSource(tex);
+
+  let inputs = {
+    puzzle,
+    user_input: userInput
+  };
 
   const { verifier, proof} : { verifier: any, proof: Uint8Array }= await createProof(compiled_noir, inputs);
 
@@ -51,7 +53,7 @@ async function prove() {
 
 const clicked = (index : number) => {
   
-  const revealed = inputs.puzzle[index];
+  const revealed = puzzle[index];
   if (userInput.includes(revealed)) {
     // Second guess and we found a pair
   console.log("second and pair");
