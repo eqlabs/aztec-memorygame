@@ -1,25 +1,19 @@
 No files changed, compilation skipped
 Deployer: 0x894BB40B3Fc7EA2C73951811C6ea7828A8BB1A1c
-Deployed to: 0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f
-Transaction hash: 0xb86a534200b48bbe3248eacb1539a3f5573e0ea00121d39517e903afb238ebd3
+Deployed to: 0xC27fFfCECF09d766c6f3D8edF85c117E5fD7b93d
+Transaction hash: 0x8ded27341062a7fd6041a9118fc6fd8823bf8b795338f080b614b26a5b68d5a3
 Starting contract verification...
 Waiting for etherscan to detect contract deployment...
-Start verifying contract `0x7ea0ef7adf38485b26418bef41b9fb059b98949f` deployed on goerli
+Start verifying contract `0xc27fffcecf09d766c6f3d8edf85c117e5fd7b93d` deployed on goerli
 
-Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0xC27fFfCECF09d766c6f3D8edF85c117E5fD7b93d".
 
-Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0xC27fFfCECF09d766c6f3D8edF85c117E5fD7b93d".
 
-Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
-
-Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
-
-Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
-
-Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0x7ea0eF7ADf38485B26418BeF41B9fb059B98949f".
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0xC27fFfCECF09d766c6f3D8edF85c117E5fD7b93d".
 Submitted contract for verification:
 	Response: `OK`
-	GUID: `dzffmvjrfal1rut9ihcmcd2blgumg2k8yeyvx5ydannyrdgig8`
+	GUID: `bacifiwmmakkmdj7cffichc5newjkw29yyngnuuykpef1bsqax`
 	URL:
-        https://api-goerli.etherscan.io/apiaddress/0x7ea0ef7adf38485b26418bef41b9fb059b98949f
+        https://goerli.etherscan.io/address/0xc27fffcecf09d766c6f3d8edf85c117e5fd7b93d
 Contract source code already verified

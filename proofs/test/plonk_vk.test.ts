@@ -74,6 +74,8 @@ describe("TurboVerifier check verification in nargo and in contract", function (
     const verified = await verify_proof(verifier, proof);
     const sc_verified = await verifierContract.verify(proof);
 
+    console.log("PROOF", proof.toString(), " other ");
+
     expect(verified).eq(true);
     expect(sc_verified).eq(true);
   });

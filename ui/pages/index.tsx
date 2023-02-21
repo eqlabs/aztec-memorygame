@@ -22,7 +22,7 @@ useEffect(() => {
   
 }, []);
 
-const puzzle = [1,2, 1, 2];
+const puzzle = [1, 2, 2, 1];
 
 async function execute_procedure() {
 
@@ -41,6 +41,8 @@ async function execute_procedure() {
   console.log("starting verify with proof",  Array.from(proof).map(b => b.toString(16)))
   const bytes = Array.from(proof).map(a => a.toString(16)).reduce((prev, curr) => prev + curr);
   console.log("Proof bytes", bytes);
+  console.log("Proof for", inputs)
+  console.log("Proof hex", Buffer.from(proof).toString('hex'))
 
   const verified = await verifyProof(verifier, proof);
 
