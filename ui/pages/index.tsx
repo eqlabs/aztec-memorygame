@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import {
   compileNoirSource,
@@ -8,22 +9,40 @@ import {
 } from "../utils/compile_prove_verify";
 
 const CIRCUIT_PATH = new URL("../../proofs/circuits/src/main.nr", import.meta.url).href;
+const puzzleSize = 4;
 
-let inputs = {
-  puzzle: [1,2, 1, 2],
-  user_input: [1,2, 1, 2],
-};
 
-export async function execute_procedure() {
+
+export default function Home() {
+
+  
+const [userInput, setUserInput] = useState<number[]>(new Array<number>(puzzleSize).fill(0));
+
+useEffect(() => {
+  
+}, []);
+
+const puzzle = [1, 2, 2, 1];
+
+async function execute_procedure() {
 
   const cir = await fetch(CIRCUIT_PATH);
   const tex = await cir.text();
 
   const compiled_noir = await compileNoirSource(tex);
 
-  const { verifier, proof } = await createProof(compiled_noir, inputs);
+  let inputs = {
+    puzzle,
+    user_input: userInput
+  };
 
-  console.log("starting verify")
+  const { verifier, proof} : { verifier: any, proof: Uint8Array }= await createProof(compiled_noir, inputs);
+
+  console.log("starting verify with proof",  Array.from(proof).map(b => b.toString(16)))
+  const bytes = Array.from(proof).map(a => a.toString(16)).reduce((prev, curr) => prev + curr);
+  console.log("Proof bytes", bytes);
+  console.log("Proof for", inputs)
+  console.log("Proof hex", Buffer.from(proof).toString('hex'))
 
   const verified = await verifyProof(verifier, proof);
 
@@ -34,7 +53,38 @@ async function prove() {
   execute_procedure();
 }
 
-export default function Home() {
+const clicked = (index : number) => {
+  
+  const revealed = puzzle[index];
+  if (userInput.includes(revealed)) {
+    // Second guess and we found a pair
+  console.log("second and pair");
+    const newInput = userInput.map((input, i) => i == index ? revealed : input);
+    setUserInput(newInput);
+  }
+  else {
+
+    var unique = userInput.filter(a => userInput.indexOf(a) == userInput.lastIndexOf(a))[0];
+    if (!unique || unique == 0) {
+      console.log("first guess");
+      // First guess
+      const newInput = userInput.map((input, i) => i == index ? revealed : input);
+      setUserInput(newInput);
+    }
+    else {
+      console.log("second but no pair");
+          // Second guess but no pair
+      const ind = userInput.indexOf(unique);
+      const newInput = userInput.map((input, i) => i == ind ? 0 : input);
+      setUserInput(newInput);
+    }
+    
+  }
+  
+  //console.log("Clicked index", index, newInput);
+  
+}
+
   return (
     <div className={styles.container}>
       <Head>
@@ -45,46 +95,20 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Memory card game
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
+          Try to find pairs! It's all protected by Zero Knowledge.
         </p>
 
-        <button onClick={prove}>Prove</button>
+        <button onClick={prove}>Verify (partial) solution</button>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          {userInput.map((item,i) => 
+          <p key={i} className={styles.card} onClick={() => clicked(i)}>{item}</p>  )}
+          
+         
         </div>
       </main>
 

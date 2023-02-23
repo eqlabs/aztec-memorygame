@@ -1,0 +1,19 @@
+No files changed, compilation skipped
+Deployer: 0x894BB40B3Fc7EA2C73951811C6ea7828A8BB1A1c
+Deployed to: 0xC27fFfCECF09d766c6f3D8edF85c117E5fD7b93d
+Transaction hash: 0x8ded27341062a7fd6041a9118fc6fd8823bf8b795338f080b614b26a5b68d5a3
+Starting contract verification...
+Waiting for etherscan to detect contract deployment...
+Start verifying contract `0xc27fffcecf09d766c6f3d8edf85c117e5fd7b93d` deployed on goerli
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0xC27fFfCECF09d766c6f3D8edF85c117E5fD7b93d".
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0xC27fFfCECF09d766c6f3D8edF85c117E5fD7b93d".
+
+Submitting verification for [src/plonk_vk.sol:TurboVerifier] "0xC27fFfCECF09d766c6f3D8edF85c117E5fD7b93d".
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `bacifiwmmakkmdj7cffichc5newjkw29yyngnuuykpef1bsqax`
+	URL:
+        https://goerli.etherscan.io/address/0xc27fffcecf09d766c6f3d8edf85c117e5fd7b93d
+Contract source code already verified
